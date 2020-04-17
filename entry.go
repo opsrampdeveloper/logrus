@@ -131,10 +131,12 @@ func (entry *Entry) write() {
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Failed to obtain reader, %v\n", err)
 	} else {
-		_, err = entry.Logger.Out.Write(serialized)
+		entry.Logger.Out.Write(serialized)
+		//commenting to avoid unnecessary errors on error std console
+		/*_, err = entry.Logger.Out.Write(serialized)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "Failed to write to log, %v\n", err)
-		}
+		}*/
 	}
 }
 
